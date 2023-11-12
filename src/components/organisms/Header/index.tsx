@@ -1,4 +1,4 @@
-import ButtonCart from "../ButtonCart";
+import ButtonCart from "../../atoms/ButtonCart";
 import { SFlex, SH2Mks, SH2Sistemas, SHeader } from "./style";
 
 const Header = () => {

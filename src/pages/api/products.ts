@@ -1,4 +1,4 @@
-import { baseUrlAxios } from "./baseUrlAxios";
+import { axiosApi } from "./axiosApi";
 import { IProduct } from "./interfaces/product.interface";
 
 interface IFetchProductsParams {
@@ -16,7 +16,7 @@ export const fetchProducts = async ({
   orderBy,
 }: IFetchProductsParams): Promise<IProduct[]> => {
   try {
-    const response = await baseUrlAxios.get("/products", {
+    const response = await axiosApi.get("/products", {
       params: {
         page,
         rows,
@@ -30,3 +30,5 @@ export const fetchProducts = async ({
     throw new Error("Erro ao buscar produtos");
   }
 };
+
+

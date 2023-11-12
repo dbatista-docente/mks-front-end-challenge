@@ -6,7 +6,10 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "lint": "eslint . --ext .tsx,.ts",
+    "format": "prettier --write ."
   },
   "dependencies": {
     "@testing-library/jest-dom": "^6.1.4",
@@ -28,5 +31,12 @@
     "eslint": "^8",
     "eslint-config-next": "14.0.2",
     "typescript": "^5"
+  },
+  "jest": {
+    "preset": "ts-jest",
+    "testEnvironment": "jsdom",
+    "moduleNameMapper": {
+      "\\.(css|less|scss|sss|styl)$": "<rootDir>/node_modules/jest-css-modules"
+    }
   }
 }

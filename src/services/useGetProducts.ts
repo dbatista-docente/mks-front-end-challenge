@@ -1,12 +1,5 @@
-import { axiosApi } from "@/pages/api/axiosApi";
+import { axiosApi } from "@/pages/api";
 import { useQuery } from "react-query"
-
-interface IGetProductsParams {
-    page: number;
-    rows: number;
-    sortBy: "id" | "name" | "price";
-    orderBy: "ASC" | "DESC";
-}
 
 const getProducts = async ({
     page,

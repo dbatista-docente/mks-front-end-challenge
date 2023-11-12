@@ -1,8 +1,8 @@
-import { baseUrlAxios } from "../baseUrlAxios";
+import { axiosApi } from "../axiosApi";
 import { IProduct } from "../interfaces/product.interface";
 import { fetchProducts } from "../products";
 
-const mockedAxios = baseUrlAxios as jest.Mocked<typeof baseUrlAxios>;
+const mockedAxios = axiosApi as jest.Mocked<typeof axiosApi>;
 jest.mock("../baseUrlAxios");
 
 describe("fetchProducts", () => {

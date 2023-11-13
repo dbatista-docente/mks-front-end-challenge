@@ -5,13 +5,14 @@ interface ModalContainerProps {
   }
 
 export const SModalContainer = styled.div<ModalContainerProps>`
+visibility: ${props => (props.isOpen ? 'visible' : 'hidden')};
 width: 486px;
 min-height: 100vh;
 background: #0F52BA;
 box-shadow: -5px 0px 6px 0px rgba(0, 0, 0, 0.13);
 z-index: 2;
 position: absolute;
-right: ${props => (props.isOpen ? '0' : '-500px')};
+right: 0 ;
 top: 0;
 transition: right 0.3s ease;
 `

@@ -22,6 +22,7 @@
     "react-dom": "^18",
     "react-loading-skeleton": "^3.3.1",
     "react-query": "^3.39.3",
+    "react-use": "^17.4.0",
     "styled-components": "^6.1.1",
     "ts-jest": "^29.1.1"
   },

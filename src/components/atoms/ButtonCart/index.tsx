@@ -1,8 +1,13 @@
+import { Dispatch, SetStateAction } from "react";
 import { SButtonCart, SNumberCart } from "./style";
 
-const ButtonCart = () => {
+interface IProps {
+  setswitchModal: Dispatch<SetStateAction<boolean>>
+}
+
+const ButtonCart = ({setswitchModal}: IProps) => {
   return (
-    <SButtonCart>
+    <SButtonCart onClick={()=> setswitchModal(true)}>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="19"

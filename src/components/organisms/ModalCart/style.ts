@@ -1,14 +1,19 @@
 import styled from "styled-components";
 
-export const SModalContainer = styled.div`
+interface ModalContainerProps {
+    isOpen: boolean;
+  }
+
+export const SModalContainer = styled.div<ModalContainerProps>`
 width: 486px;
 min-height: 100vh;
 background: #0F52BA;
 box-shadow: -5px 0px 6px 0px rgba(0, 0, 0, 0.13);
 z-index: 2;
 position: absolute;
-right: 0;
+right: ${props => (props.isOpen ? '0' : '-500px')};
 top: 0;
+transition: right 1s ease;
 `
 
 export const SHeaderModal = styled.header`
@@ -27,5 +32,5 @@ line-height: normal;
 `
 
 export const SCloseModal = styled.span`
-
+cursor: pointer;
 `

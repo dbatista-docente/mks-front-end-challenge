@@ -6,6 +6,7 @@ import { IProduct } from "@/services/interfaces/product.interface"
 import { useGetProducts } from "@/services/useGetProducts"
 import { SContainerProducts, SMain } from "@/components/templates/ProductsList/style"
 import ModalCart from "@/components/organisms/ModalCart"
+import { useState } from "react"
 
 
 const ProductLists: React.FC = () => {
@@ -15,9 +16,10 @@ const ProductLists: React.FC = () => {
         sortBy: "name",
         orderBy: "ASC"
     })
+    const [switchModal, setSwitchModal ] = useState<boolean>(false)
 
     return <>
-        <Header />
+        <Header setSwitchModal={setSwitchModal} />
         <SMain>
             <SContainerProducts>
 
@@ -38,7 +40,7 @@ const ProductLists: React.FC = () => {
                     ))) : SkeletonCard(8))
                 }
             </SContainerProducts>
-            <ModalCart/>
+            <ModalCart switchModal={switchModal} setswitchModal={setSwitchModal}/>
         </SMain>
         <Footer />
     </>

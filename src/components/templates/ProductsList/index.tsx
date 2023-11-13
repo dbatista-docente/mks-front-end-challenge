@@ -8,15 +8,9 @@ import { SContainerProducts, SMain } from "@/components/templates/ProductsList/s
 import ModalCart from "@/components/organisms/ModalCart"
 import { useState } from "react"
 import { useLocalStorage } from "react-use"
+import { IProductCart } from "@/services/interfaces/productCart.interface"
 
-interface IProductCart {
-    id: number;
-    amount: number;
-    name: string;
-    brand: string;
-    photo: string;
-    price: string;
-}
+
 
 const ProductLists: React.FC = () => {
     const { data, isLoading } = useGetProducts({
@@ -28,7 +22,7 @@ const ProductLists: React.FC = () => {
     const [switchModal, setSwitchModal] = useState<boolean>(false)
     const [productsCart, setProductsCart, removeProductsCart] = useLocalStorage<IProductCart[]>('c', []);
 
-    const handleProductCard = (action: string, product: IProduct) => {
+    const handleProductCard = (action: string, product: IProduct | IProductCart) => {
         const { id, name, brand, photo, price } = product;
         const productCard = { id, name, brand, photo, price, amount: 1 };
 
@@ -98,7 +92,7 @@ const ProductLists: React.FC = () => {
                     ))) : SkeletonCard(8))
                 }
             </SContainerProducts>
-            <ModalCart switchModal={switchModal} setswitchModal={setSwitchModal} />
+            <ModalCart switchModal={switchModal} setswitchModal={setSwitchModal} productsCart={productsCart} handleProductCard={handleProductCard} />
         </SMain>
         <Footer />
     </>

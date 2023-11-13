@@ -1,12 +1,17 @@
 import { Dispatch, SetStateAction } from "react"
 import { SCloseModal, SHeaderModal, SModalContainer, STitleModal } from "./style"
+import { IProductCart } from "@/services/interfaces/productCart.interface";
+import CartItemCard from "@/components/molecules/CartItemCard";
+import { IProduct } from "@/services/interfaces/product.interface";
 
 interface IProps {
-    switchModal: boolean; 
-    setswitchModal: Dispatch<SetStateAction<boolean>>
+    switchModal: boolean;
+    setswitchModal: Dispatch<SetStateAction<boolean>>;
+    productsCart: IProductCart[] | undefined;
+    handleProductCard: (action: string, product: IProduct | IProductCart) => void
 }
 
-const ModalCart = ({switchModal, setswitchModal}: IProps) => {
+const ModalCart = ({ switchModal, setswitchModal, productsCart, handleProductCard }: IProps) => {
 
     return <>
         <SModalContainer isOpen={switchModal}>
@@ -19,6 +24,16 @@ const ModalCart = ({switchModal, setswitchModal}: IProps) => {
                     <span style={{ position: "absolute", color: "#fff", left: "415px", top: "47px" }}>X</span>
                 </SCloseModal>
             </SHeaderModal>
+
+            <CartItemCard key={89} product={{
+                "id": 8,
+                "name": "Headset Cloud Stinger",
+                "brand": "HyperX",
+                "photo": "https://mks-sistemas.nyc3.digitaloceanspaces.com/products/hyperxcloudstinger.webp",
+                "price": "600.00",
+                "amount": 3
+            }} handleProductCard={handleProductCard} />
+
         </SModalContainer >
     </>
 }

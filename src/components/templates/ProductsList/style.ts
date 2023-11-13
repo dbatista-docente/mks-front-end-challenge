@@ -4,7 +4,8 @@ export const SMain = styled.main`
  display: flex;
  width: 100vw;
  justify-content: center;
- margin-top: 100px;
+ margin-top: 50px;
+ margin-bottom: 50px;
 `;
 
 export const SContainerProducts = styled.div`

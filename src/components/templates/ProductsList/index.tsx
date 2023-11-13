@@ -5,6 +5,7 @@ import Header from "@/components/organisms/Header"
 import { IProduct } from "@/services/interfaces/product.interface"
 import { useGetProducts } from "@/services/useGetProducts"
 import { SContainerProducts, SMain } from "@/components/templates/ProductsList/style"
+import ModalCart from "@/components/organisms/ModalCart"
 
 
 const ProductLists: React.FC = () => {
@@ -37,6 +38,7 @@ const ProductLists: React.FC = () => {
                     ))) : SkeletonCard(8))
                 }
             </SContainerProducts>
+            <ModalCart/>
         </SMain>
         <Footer />
     </>

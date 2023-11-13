@@ -10,6 +10,7 @@ export const SButtonCart = styled.button`
   border-radius: 8px;
   background: #fff;
   margin-right: 88px;
+  cursor: pointer;
 `;
 
 export const SNumberCart = styled.h2`

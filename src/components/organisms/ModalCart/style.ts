@@ -13,7 +13,7 @@ z-index: 2;
 position: absolute;
 right: ${props => (props.isOpen ? '0' : '-500px')};
 top: 0;
-transition: right 1s ease;
+transition: right 0.3s ease;
 `
 
 export const SHeaderModal = styled.header`

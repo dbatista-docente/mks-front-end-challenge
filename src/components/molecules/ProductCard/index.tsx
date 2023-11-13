@@ -1,7 +1,13 @@
 import { IProduct } from "@/services/interfaces/product.interface";
 import { SButtonBuy, SCard, SDescription, SFlex, SNameProduct, SPhoto, SPrice } from "./style";
+import { Dispatch, SetStateAction } from "react";
 
-export const ProductCard = (product: IProduct) => {
+interface IProps {
+  product: IProduct
+  handleProductCard: (action: string, product: IProduct) => void
+}
+
+export const ProductCard = ({ product, handleProductCard }: IProps) => {
   return <SCard>
     <SPhoto src={product.photo}></SPhoto>
     <SFlex>
@@ -11,7 +17,7 @@ export const ProductCard = (product: IProduct) => {
     <SDescription>
       {product.description}
     </SDescription>
-    <SButtonBuy>
+    <SButtonBuy onClick={()=>handleProductCard("add", product)}>
       <svg width="14" height="16" viewBox="0 0 14 16" fill="none" xmlns="http://www.w3.org/2000/svg">
         <g id="shopping-bag">
           <path id="Path" opacity="0.737212" fill-rule="evenodd" clip-rule="evenodd" d="M3 1L1 3.7V13.15C1 13.8956 1.59695 14.5 2.33333 14.5H11.6667C12.403 14.5 13 13.8956 13 13.15V3.7L11 1H3Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />

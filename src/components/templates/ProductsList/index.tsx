@@ -7,6 +7,16 @@ import { useGetProducts } from "@/services/useGetProducts"
 import { SContainerProducts, SMain } from "@/components/templates/ProductsList/style"
 import ModalCart from "@/components/organisms/ModalCart"
 import { useState } from "react"
+import { useLocalStorage } from "react-use"
+
+interface IProductCart {
+    id: number;
+    amount: number;
+    name: string;
+    brand: string;
+    photo: string;
+    price: string;
+}
 
 
 const ProductLists: React.FC = () => {
@@ -16,7 +26,62 @@ const ProductLists: React.FC = () => {
         sortBy: "name",
         orderBy: "ASC"
     })
-    const [switchModal, setSwitchModal ] = useState<boolean>(false)
+    const [switchModal, setSwitchModal] = useState<boolean>(false)
+    const [productsCart, setProductsCart, removeProductsCart] = useLocalStorage<IProductCart[]>('c', []);
+
+    const handleProductCard = (action: string, product: IProduct) => {
+        const { id, name, brand, photo, price } = product;
+        const productCard = { id, name, brand, photo, price, amount: 1 };
+
+        switch (action) {
+            case "add": {
+                const updatedCart = [...(productsCart || [])];
+                const existingProductIndex = updatedCart.findIndex((p) => p.id === productCard.id);
+              
+                if (existingProductIndex !== -1) {
+                  // Se o produto já existe, crie uma cópia do estado anterior
+                  const existingProduct = updatedCart[existingProductIndex];
+              
+                  // Aumente a quantidade na cópia
+                  existingProduct.amount += 1;
+                } else {
+                  // Se o produto não existe, adicione ao carrinho com quantidade 1
+                  updatedCart.push({ ...productCard, amount: 1 });
+                }
+              
+                // Atualize o estado com a cópia modificada ou o novo produto
+                setProductsCart(updatedCart);
+              
+                break;
+              }
+            case "removeById": {
+                const existingProductIndex = productsCart?.findIndex((p) => p.id === id);
+
+                if (existingProductIndex !== undefined && existingProductIndex !== -1) {
+                    //@ts-ignore
+                    const existingProduct = productsCart[existingProductIndex];
+
+                    if (existingProduct.amount > 1) {
+                        existingProduct.amount -= 1;
+                        //@ts-ignore
+                        setProductsCart((prevProducts) => [...prevProducts]);
+                    } else {
+                        // Se a quantidade for 1, remova o produto
+                        const updatedCart = productsCart?.filter((_, index) => index !== existingProductIndex);
+                        setProductsCart(updatedCart);
+                    }
+                }
+
+                break;
+            }
+            case "removeAll": {
+                removeProductsCart();
+                break;
+            }
+            default:
+                break;
+        }
+    };
 
     return <>
         <Header setSwitchModal={setSwitchModal} />
@@ -28,19 +93,13 @@ const ProductLists: React.FC = () => {
                     (data ? (data.map((e: IProduct) => (
                         <ProductCard
                             key={e.id}
-                            id={e.id}
-                            name={e.name}
-                            brand={e.brand}
-                            description={e.description}
-                            photo={e.photo}
-                            price={e.price}
-                            createdAt={e.createdAt}
-                            updatedAt={e.updatedAt}
+                            product={e}
+                            handleProductCard={handleProductCard}
                         />
                     ))) : SkeletonCard(8))
                 }
             </SContainerProducts>
-            <ModalCart switchModal={switchModal} setswitchModal={setSwitchModal}/>
+            <ModalCart switchModal={switchModal} setswitchModal={setSwitchModal} />
         </SMain>
         <Footer />
     </>

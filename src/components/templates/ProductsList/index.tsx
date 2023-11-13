@@ -18,7 +18,6 @@ interface IProductCart {
     price: string;
 }
 
-
 const ProductLists: React.FC = () => {
     const { data, isLoading } = useGetProducts({
         page: 1,
@@ -54,26 +53,26 @@ const ProductLists: React.FC = () => {
               
                 break;
               }
-            case "removeById": {
-                const existingProductIndex = productsCart?.findIndex((p) => p.id === id);
-
-                if (existingProductIndex !== undefined && existingProductIndex !== -1) {
-                    //@ts-ignore
-                    const existingProduct = productsCart[existingProductIndex];
-
-                    if (existingProduct.amount > 1) {
-                        existingProduct.amount -= 1;
-                        //@ts-ignore
-                        setProductsCart((prevProducts) => [...prevProducts]);
-                    } else {
-                        // Se a quantidade for 1, remova o produto
-                        const updatedCart = productsCart?.filter((_, index) => index !== existingProductIndex);
-                        setProductsCart(updatedCart);
-                    }
+              case "removeById": {
+                const updatedCart = [...(productsCart || [])];
+                const existingProductIndex = updatedCart.findIndex((p) => p.id === id);
+              
+                if (existingProductIndex !== -1) {
+                  const existingProduct = updatedCart[existingProductIndex];
+              
+                  if (existingProduct.amount > 1) {
+                    existingProduct.amount -= 1;
+                  } else {
+                    // Se a quantidade for 1, remova o produto
+                    updatedCart.splice(existingProductIndex, 1);
+                  }
+              
+                  // Atualize o estado com a cópia modificada
+                  setProductsCart(updatedCart);
                 }
-
+              
                 break;
-            }
+              }         
             case "removeAll": {
                 removeProductsCart();
                 break;

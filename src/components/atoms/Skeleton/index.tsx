@@ -5,7 +5,7 @@ const SkeletonCard = (qtd: number) =>  {
     let data = []
     
     for (let i = 0; i < qtd; i++) {
-        data.push(<Skeleton width={"217.562px"} height={"285px"} borderRadius={"8px"} />)
+        data.push(<Skeleton key={i} width={"217.562px"} height={"285px"} borderRadius={"8px"} />)
     }
 
     return data

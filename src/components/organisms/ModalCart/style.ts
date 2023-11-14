@@ -38,6 +38,7 @@ line-height: normal;
 `
 export const SMainModal = styled.main`
 display: flex;
+min-height: 150px;
 flex-direction: column;
 align-items: center;
 justify-content: center;

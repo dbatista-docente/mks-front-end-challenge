@@ -49,7 +49,7 @@ const ModalCart = ({ switchModal, setswitchModal, productsCart, handleProductCar
             <STotal>Total:</STotal>
             <STotalPrice>R${CalculateTotal}</STotalPrice>
           </STotalContainer>
-          <SFinishButton>Finalizar Compra</SFinishButton>
+          <SFinishButton onClick={()=> {if(productsCart) handleProductCard("removeAll", productsCart[0])}}>Finalizar Compra</SFinishButton>
         </SFooterModal>
       </SModalContainer>
     </>

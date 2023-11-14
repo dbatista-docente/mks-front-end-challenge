@@ -15,7 +15,7 @@ interface IProps {
 
 const useShoppingCart = ({productsCart, setProductsCart, removeProductsCart}: IProps): IUseShoppingCart => {
 
-    const handleProductCard = (action: string, product: IProduct | IProductCart) => {
+    const handleProductCard = (action: string, product: IProduct | IProductCart  ) => {
         const { id, name, brand, photo, price } = product;
         const productCard = { id, name, brand, photo, price, amount: 1 };
 

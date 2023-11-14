@@ -43,6 +43,9 @@ flex-direction: column;
 align-items: center;
 justify-content: center;
 gap: 20px;
+@media screen and (max-width: 768px ){
+  min-height: 170x;
+}
 `
 
 export const SCloseModal = styled.span`

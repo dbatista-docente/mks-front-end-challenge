@@ -46,6 +46,9 @@ gap: 20px;
 @media screen and (max-width: 768px ){
   min-height: 170x;
 }
+@media screen and (min-width: 1200px ){
+  min-height: 391x;
+}
 `
 
 export const SCloseModal = styled.span`

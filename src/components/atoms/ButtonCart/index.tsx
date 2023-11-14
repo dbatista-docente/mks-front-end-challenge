@@ -1,7 +1,7 @@
 import { Dispatch, SetStateAction } from "react";
 import { SButtonCart, SNumberCart } from "./style";
 import { IProductCart } from "@/services/interfaces/productCart.interface";
-import { useProductCount } from "./hooks/useProductCount";
+import { useProductCount } from "../../../services/useProductCount";
 
 interface IProps {
   setswitchModal: Dispatch<SetStateAction<boolean>>

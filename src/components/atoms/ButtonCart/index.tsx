@@ -1,13 +1,19 @@
 import { Dispatch, SetStateAction } from "react";
 import { SButtonCart, SNumberCart } from "./style";
+import { IProductCart } from "@/services/interfaces/productCart.interface";
+import { useProductCount } from "./hooks/useProductCount";
 
 interface IProps {
   setswitchModal: Dispatch<SetStateAction<boolean>>
+  productsCart: IProductCart[] | undefined
 }
 
-const ButtonCart = ({setswitchModal}: IProps) => {
+const ButtonCart = ({ setswitchModal, productsCart }: IProps) => {
+
+  const countProducts = useProductCount(productsCart ? productsCart : [])
+
   return (
-    <SButtonCart onClick={()=> setswitchModal(true)}>
+    <SButtonCart onClick={() => setswitchModal(true)}>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="19"
@@ -20,7 +26,7 @@ const ButtonCart = ({setswitchModal}: IProps) => {
           fill="black"
         />
       </svg>
-      <SNumberCart>0</SNumberCart>
+      <SNumberCart>{countProducts}</SNumberCart>
     </SButtonCart>
   );
 };

@@ -84,3 +84,12 @@ background-color: transparent;
 border: none;
 cursor: pointer;
 `
+export const CloseButtonContainer = styled.div`
+  position: absolute;
+  margin-top: -105px;
+  margin-left: 380px;
+  @media screen and (max-width: 768px ){
+    margin-top: -225px;
+  margin-left: 235px;
+  }
+`;

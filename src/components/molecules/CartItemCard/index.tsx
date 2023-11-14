@@ -11,6 +11,7 @@ import {
   SButtonRemoveAmount,
 } from './style';
 import { IProduct } from '@/services/interfaces/product.interface';
+import CloseButton from '@/components/atoms/CloseButton';
 
 interface IProps {
   product: IProductCart;
@@ -20,6 +21,9 @@ interface IProps {
 const CartItemCard = ({ product, handleProductCard }: IProps) => {
   return (
     <SCardCart>
+      <div style={{position: "absolute", marginTop: "-105px", marginLeft: "335px"  }}>
+        <CloseButton onClick={() => handleProductCard("remove", product)} width={'18'} />
+      </div>
       <SPhotoCart src={product.photo} alt={product.name} />
       <SNameProductCart>{product.name}</SNameProductCart>
       <SQuantityContainer>

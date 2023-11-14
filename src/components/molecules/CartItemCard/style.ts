@@ -9,9 +9,7 @@ export const SCardCart = styled.div`
   border-radius: 8px;
   background: #FFF;
   box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.14);
-  margin: 30px 50px;
   padding: 10px;
-
 `;
 
 export const SPhotoCart = styled.img`
@@ -70,4 +68,5 @@ font-size: 8px;
   font-weight: 400;
 background-color: transparent;
 border: none;
+cursor: pointer;
 `

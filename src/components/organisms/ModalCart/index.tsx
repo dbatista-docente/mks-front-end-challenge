@@ -1,5 +1,5 @@
 import { Dispatch, SetStateAction } from "react";
-import { SCloseModal, SHeaderModal, SMainModal, SModalContainer, STitleModal } from "./style";
+import { SCloseModal, SFinishButton, SFooterModal, SHeaderModal, SMainModal, SModalContainer, STitleModal, STotal } from "./style";
 import { IProductCart } from "@/services/interfaces/productCart.interface";
 import CartItemCard from "@/components/molecules/CartItemCard";
 import { IProduct } from "@/services/interfaces/product.interface";
@@ -17,7 +17,7 @@ const ModalCart = ({ switchModal, setswitchModal, productsCart, handleProductCar
     <>
       <SModalContainer isOpen={switchModal}>
         <SHeaderModal>
-          <STitleModal>Carrinho de compras</STitleModal>        
+          <STitleModal>Carrinho de compras</STitleModal>
           <CloseButton onClick={() => setswitchModal(false)} width={"38"} />
         </SHeaderModal>
 
@@ -26,6 +26,11 @@ const ModalCart = ({ switchModal, setswitchModal, productsCart, handleProductCar
             <CartItemCard key={product.id} product={product} handleProductCard={handleProductCard} />
           ))}
         </SMainModal>
+
+        <SFooterModal>
+          <STotal>Total: R$ {500}</STotal>
+          <SFinishButton>Finalizar Compra</SFinishButton>
+        </SFooterModal>
       </SModalContainer>
     </>
   );

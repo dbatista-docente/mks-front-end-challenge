@@ -47,3 +47,25 @@ gap: 20px;
 export const SCloseModal = styled.span`
 cursor: pointer;
 `
+export const SFooterModal = styled.footer`
+  background-color: #000;
+  color: #fff;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+export const STotal = styled.div`
+  font-size: 18px;
+  margin-bottom: 10px;
+`;
+
+export const SFinishButton = styled.button`
+  background-color: #fff;
+  color: #000;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+`;

@@ -11,6 +11,9 @@ export const SButtonCart = styled.button`
   background: #fff;
   margin-right: 88px;
   cursor: pointer;
+  @media screen and (max-width: 768px ){
+    margin-right: 10px;
+}
 `;
 
 export const SNumberCart = styled.h2`

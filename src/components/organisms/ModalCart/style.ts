@@ -16,6 +16,10 @@ right: 0 ;
 top: 0;
 transition: right 0.3s ease;
 overflow-y: auto;
+
+@media screen and (max-width: 768px ){
+  width: 80vw;
+}
 `
 
 export const SHeaderModal = styled.header`

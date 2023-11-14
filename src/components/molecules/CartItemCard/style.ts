@@ -10,10 +10,18 @@ export const SCardCart = styled.div`
   background: #FFF;
   box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.14);
   padding: 10px;
+  @media screen and (max-width: 768px ){
+    flex-direction: column;
+    height: 220px;
+    width:220px;
+}
 `;
 
 export const SPhotoCart = styled.img`
   height: 60px;
+  @media screen and (max-width: 768px ){
+    height: 90px;
+  }
 `;
 
 export const SFlexCart = styled.div`
@@ -34,6 +42,12 @@ font-style: normal;
 font-weight: 400;
 line-height: 17px; /* 130.769% */
 `;
+
+export const SContainerQuantityAndPrice = styled.div`
+display: flex;
+gap: 40px;
+padding: 10px;
+`
 
 export const SQuantityContainer = styled.div`
   display: flex;

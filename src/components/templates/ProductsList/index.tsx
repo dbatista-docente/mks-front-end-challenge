@@ -86,7 +86,7 @@ const ProductLists: React.FC = () => {
   };
 
   return <>
-    <Header setSwitchModal={setSwitchModal} />
+    <Header setSwitchModal={setSwitchModal} productsCart={productsCart} />
     <SMain>
       <SContainerProducts>
 

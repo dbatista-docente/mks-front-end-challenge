@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
 interface ModalContainerProps {
-    isOpen: boolean;
-  }
+  isOpen: boolean;
+}
 
 export const SModalContainer = styled.div<ModalContainerProps>`
 visibility: ${props => (props.isOpen ? 'visible' : 'hidden')};
@@ -48,24 +48,51 @@ export const SCloseModal = styled.span`
 cursor: pointer;
 `
 export const SFooterModal = styled.footer`
-  background-color: #000;
+position: absolute;
   color: #fff;
-  padding: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-top: 185px;
+  padding-top: 30px;
+  width:100%;
+  @media screen and (max-width: 768px ){
+    margin-top: 185px;
+    padding-top: 0px;
+}
 `;
 
-export const STotal = styled.div`
-  font-size: 18px;
-  margin-bottom: 10px;
+export const STotalContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  width: 80%;
+  margin: auto;
+  padding: 30px;
+  
 `;
+
+export const STotal = styled.span`
+  color: #FFF;
+  font-size: 28px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 15px; /* 53.571% */
+`
+export const STotalPrice = styled.span`
+  color: #FFF;
+  font-size: 28px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 15px; /* 53.571% */
+`
 
 export const SFinishButton = styled.button`
-  background-color: #fff;
-  color: #000;
+  width:100%;
+  height: 97px;
+  background-color: #000;
+  color: #fff;
   padding: 10px 20px;
   border: none;
   cursor: pointer;
-  font-size: 16px;
+  font-size: 28px;
 `;

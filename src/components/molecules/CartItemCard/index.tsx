@@ -8,6 +8,7 @@ import {
   SQuantityContainer,
   SQuantityInput,
   SPriceCart,
+  SButtonRemoveAmount,
 } from './style';
 import { IProduct } from '@/services/interfaces/product.interface';
 
@@ -22,11 +23,12 @@ const CartItemCard = ({ product, handleProductCard }: IProps) => {
       <SPhotoCart src={product.photo} alt={product.name} />
       <SNameProductCart>{product.name}</SNameProductCart>
       <SQuantityContainer>
-        <button onClick={() => handleProductCard("removeById", product)}>-</button>
+        <span style={{ position: "absolute", fontSize: "5px", marginBottom: "30px", marginRight: "50px" }}> Qtd:</span>
+        <SButtonRemoveAmount onClick={() => handleProductCard("removeById", product)}>-</SButtonRemoveAmount>
         <SQuantityInput type="text" value={product.amount} readOnly />
-        <button onClick={() => handleProductCard("add", product)}>+</button>
+        <SButtonRemoveAmount onClick={() => handleProductCard("add", product)}>+</SButtonRemoveAmount>
       </SQuantityContainer>
-      <SPriceCart>R${product.price}</SPriceCart>
+      <SPriceCart>R${Number(product.price) * product.amount}</SPriceCart>
     </SCardCart>
   );
 };

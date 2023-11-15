@@ -46,7 +46,7 @@ gap: 20px;
 @media screen and (max-width: 768px ){
   min-height: 170x;
 }
-@media screen and (min-width: 1200px ){
+@media screen and (min-width: 769px ){
   min-height: 391x;
 }
 `

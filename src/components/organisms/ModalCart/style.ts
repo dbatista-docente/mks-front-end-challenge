@@ -38,17 +38,11 @@ line-height: normal;
 `
 export const SMainModal = styled.main`
 display: flex;
-min-height: 150px;
+min-height: 391x;
 flex-direction: column;
 align-items: center;
 justify-content: center;
 gap: 20px;
-@media screen and (max-width: 768px ){
-  min-height: 170x;
-}
-@media screen and (min-width: 769px ){
-  min-height: 391x;
-}
 `
 
 export const SCloseModal = styled.span`
